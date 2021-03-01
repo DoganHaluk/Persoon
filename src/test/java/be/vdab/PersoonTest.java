@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatNullPointerException;
+import static org.assertj.core.api.Assertions.*;
 
 class PersoonTest {
     private Persoon voornaam;
@@ -18,13 +17,13 @@ class PersoonTest {
 
     @Test
     void eenNullWaardeKanNiet() {
-        assertThatNullPointerException().isThrownBy(() -> voornaam.add(null));
+        assertThatIllegalArgumentException().isThrownBy(() -> voornaam.add(null));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"", " ", "   "})
     void moetMinstensEenNietBlancoTekenBevatten(String tekst) {
-        assertThatNullPointerException().isThrownBy(() -> voornaam.add(tekst));
+        assertThatIllegalArgumentException().isThrownBy(() -> voornaam.add(tekst));
     }
 
     @Test

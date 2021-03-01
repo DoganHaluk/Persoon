@@ -10,7 +10,7 @@ public class Persoon {
 
     public void add(String voornaam) {
         if (voornaam == null || voornaam.trim().isEmpty()) {
-            throw new NullPointerException();
+            throw new IllegalArgumentException();
         } else {
             Stream.of(voornaam)
                     .map(naam -> naam.split(" "))
